@@ -13,7 +13,7 @@ const socketApi = {
             }
         }
 
-        this.socket = io('http://localhost:3010', option)
+        this.socket = io('http://localhost:3010/admin', option)
 
         this.socket.on('connect', () => {
         })
