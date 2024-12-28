@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import io, {Socket} from 'socket.io-client'
+import axios from 'axios';
 
 const socketApi = {
     socket: null as null | Socket,
@@ -34,6 +35,9 @@ function App() {
     const handleOnClick = () => {
         socketApi.socket?.emit('server-path', {value: text})
     }
+    const handleSendHttp = async () => {
+        await axios.post('http://localhost:3010/event', {participantId: '111'})
+    }
 
 
     const connectSocket = () => {
@@ -66,6 +70,11 @@ function App() {
                     onClick={handleOnClick}>ОТПРАВИТЬ
                 </button>
                 <div>{error}</div>
+                <br/>
+                <br/>
+                <button
+                    onClick={handleSendHttp}>КНОПКА отправки по https соеденению
+                </button>
             </div>
         </div>
     );
